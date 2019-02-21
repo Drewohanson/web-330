@@ -11,6 +11,36 @@
 const header = require('../hanson-header.js');
 console.log(header.display("Drew" , "Hanson" , "Assignment-1.3"));
 
-var url = require('url');
 
-var parsedURL = url.parse('https://www.example.com/profile7name=smith');
+
+
+// Start Function Class cellPhone
+function cellPhone(manufacturer, model, color, price) {
+    this.manufacturer = manufacturer;
+    this.model = model;
+    this.color = color;
+    this.price = price;
+
+    this.getModel = function() {
+        return this.model
+    },
+
+    this.getPrice = function() {
+        return this.price
+    },
+    
+    this.getDetails = function() {
+        return 'Manufacturer: ' + this.manufacturer + '\n' + 
+            'Model: ' + this.getModel() + '\n' +
+            'Color: ' + this.color + '\n' +
+            'Price: ' + this.getPrice()
+    }
+};
+
+//variable with cellPhone information
+var cellphone = new cellPhone('Samsung', 'Galaxy S10', 'Ocean Blue', '$799.99');
+
+//Output
+console.log(cellphone.getDetails());
+
+
