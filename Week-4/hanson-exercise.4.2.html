@@ -1,0 +1,35 @@
+<!--
+============================================
+; Title: hanson-Exercise-4.2.html
+; Author: Professor Krasso
+; Date: 16 March 2019
+; Modified By: Drew Hanson
+; Description: Get and Post Operations
+;===========================================
+ -->
+ <!DOCTYPE html>
+ <html lang="en">
+   <head>
+     <meta charset="UTF-8" />
+     <title> GET and POST Operations</title>
+ 
+     <!-- jQuery reference -->
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+   </head>
+   <body>
+    <!--creating button with id-->
+    <button id="getExample">Click Here</button>
+        <script type="text/javascript">
+        //creating get request 
+               $(function() {
+                  $("#getExample").click(function() {
+                    $.get("https://dog.ceo/api/breeds/image/random", function(data, status) {
+                      console.log(
+                        "Data: " + JSON.stringify(data) + "\nStatus: " + status
+                      );
+                    });
+                  });
+              })
+              </script>
+            </body>
+          </html>
