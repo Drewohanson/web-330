@@ -1,0 +1,93 @@
+<!--
+============================================
+; Title:  Hanson-Exercise-7.4
+; Author: Professor Krasso 
+; Date:   5 March 2019
+; Modified By: Drew Hanson
+; Description: Foreach binding and observable Arrays
+;===========================================    
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <title>Assignment 7.4</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+      integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+      crossorigin="anonymous"
+    />
+    <script src="../knockout-3.4.2.js"></script>
+  </head>
+
+<body>
+     <!-- start table -->
+    <h2 class="text-center">Assignment 7.4</h2>
+    <div class="container">
+        <table class="table table-dark table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Link</th>
+                </tr>
+             <!-- For each binding lists array in a table -->
+            <tbody data-bind="foreach:tutorials">
+                <tr>
+                    <td data-bind="text:title"></td>
+                    <td data-bind="text:description"></td>
+                    <td><a target="_blank " data-bind="text:link,attr:{href:link,title:link}"></td>
+
+                </tr>
+            </tbody>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+  <!-- end table -->
+
+
+ <!-- start knockout view model -->
+<script>
+    function TutorialViewModel() {
+        
+        this.tutorials = ko.observableArray([{
+                title: 'How to cut an onion',
+                description: 'Learan the correct way to peel and cut an onion',
+                link: 'https://www.delish.com/cooking/a23309950/how-to-cut-onion/'
+            },
+            {
+                title: 'How to create a slideshow',
+                description: 'How to create a slideshow carousel using CSS and Javascript',
+                link: 'https://www.w3schools.com/howto/howto_js_slideshow.asp'
+            },
+            {
+                title: 'How to change oil in your car',
+                description: 'Learn how to change your oil in your car with this step by step guide',
+                link: 'https://www.dummies.com/personal-finance/how-to-change-your-cars-oil/'
+            },
+            {
+                title: 'How to create an animated wave',
+                description: 'Learn how to an animated wave using CSS and Javascript',
+                link: 'https://javascript.info/css-animations'
+            },
+            {
+                title: 'How to cut a cake',
+                description: 'Learn how to cut a cake like a pro',
+                link: 'https://www.webstaurantstore.com/article/178/how-to-cut-a-cake.html'
+            },
+        ]);
+    }
+    ko.applyBindings(new TutorialViewModel())
+</script>
+</body>
+</html>

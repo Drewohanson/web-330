@@ -1,0 +1,71 @@
+<!--
+============================================
+; Title: hanson-Exercise-7.2.html
+; Author: Drew Hanson
+; Date: 5 April 2019
+; Description: Binding with an if statement 
+;===========================================
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" 
+    content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Exercise 7.2</title>
+
+    <!-- Stylesheet - Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <!-- JavaScript Libraries -->
+    <script src="../knockout-v3.5.0.js"></script>
+</head>
+<body>
+    
+<div role="main" class="container">
+    <br/><br/>
+    <h2>Exercise 7.2</h2>
+    <div class="form-group">
+        <label for="first">First Name: </label>
+        <input type="text" data-bind="value: firstName" 
+        class="form-control" id="first"/>
+    </div>
+    <div data-bind="if: displayName">
+        
+    <div class="form-group">
+             <label for="last">Last Name: </label>
+            <input type="text" data-bind="value: lastName" 
+            class="form-control" id="lastName"/>
+        </div>
+    </div>
+    <br/>
+    <div data-bind="if: fullName">
+        <h2><span id="nameOutput" 
+            class="alert-success" 
+            data-bind="text: displayFullName"></span></h2>
+    </div>
+    <br/>
+</div>
+
+<script>
+    function PersonViewModel() {
+        //makes First and last name observables
+            this.firstName = ko.observable("");
+            this.lastName = ko.observable("");
+            //creating a computed observable and return the first name to be displayed
+            this.displayName = ko.pureComputed(function () {
+            return this.firstName();
+            }, this);
+            //creating a computed observable and overwrites the first name in the h2 with the first and last name.
+            this.displayFullName = ko.pureComputed(function () {
+            return this.firstName() + " " + this.lastName();
+            }, this);
+    }
+    //applying the bindings
+    ko.applyBindings(new PersonViewModel());
+</script>
+
+</body>
+</html>
